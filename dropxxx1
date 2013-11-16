@@ -1,6 +1,6 @@
 #!/bin/bash
 # Enter [q] to quit! anyway, me, 'kabol88' not giving any warranty & responsibility to anything! and to any damage on your system. proceed at your own risk.
-function s3 { sleep 3; }; function t { cd ~; ./tshvdp; }; function i_t { executable=$1; apt-get update; apt-get install $1 -y; apt-get clean; } ; function p_i { echo; echo -e "\033[1;37m$1 
+function s3 { sleep 3; }; function t { cd ~; ./dropxxx; }; function i_t { executable=$1; apt-get update; apt-get install $1 -y; apt-get clean; } ; function p_i { echo; echo -e "\033[1;37m$1 
 "; }; function e_e { i_t "zlib1g-dev libpam0g-dev libssl-dev openssl build-essential gcc" ; }; if [ ! -f /etc/debian_version ]; then p_i " Debian 6/7 only!"; s3; exit; fi; if [ $USER \
 != 'root' ]; then echo " Run as root!"; s3; exit; fi; function r_v { executable=$1; apt-get remove --purge $1 -y; }; function r_e { executable=$1; dpkg -l | grep -i "$1"; apt-get aut\
 oremove -y; }; function a_b { if [ $ADDPORT = 'q' ]; then echo "  Aborting!"; s3; t; fi; }; function a_t { read -p ") Enter addition port [123]|[q]: " -r ADDPORT; }; function o_v { function \
@@ -16,7 +16,7 @@ cat $CLIENT.crt >> $CN; ov "</cert>"; ov "<key>"; cat $CLIENT.key >> $CN; ov "</
 ep address /etc/network/interfaces | grep -v 127.0.0.1  | awk '{print $2}' | grep -q '.' | head -1)"; IP=$(grep address /etc/network/interfaces | grep -v 127.0.0.1  | awk '{print $2}' | grep \
 '.' | head -1); clear; echo "################################################################################"; echo "#   OpenVPN With Additional Protocol & Port Selection Quick Installer Scr\
 ipt.  #"; echo "#     No warranty to any damage on your system, proceed at your own risk!      #"; echo "################################################################################"; ech\
-o; echo; echo "   1) Un|Install OpenVPN"; echo "   2) Add|Remove port"; echo "   3) Add|Revoke cert"; p_i "   0) Back to main ./tshvdp"; read -p "  Select an option [0-3]: " -n 1 -r option
+o; echo; echo "   1) Un|Install OpenVPN"; echo "   2) Add|Remove port"; echo "   3) Add|Revoke cert"; p_i "   0) Back to main ./dropxxx"; read -p "  Select an option [0-3]: " -n 1 -r option
 case $option in 1)if [ -e /etc/openvpn ]; then read -p ") Uninstall OpenVPN? [y/n]: " -n 1 -r; echo; if [[ $REPLY =~ ^[Yy]$ ]]; then sed -i '/iptables -t nat -A POSTROUTING -s 10.8.'g_t'.0/d'\
  /etc/rc.local; service openvpn stop; r_v openvpn\*; r_e openvpn; rm -rf /etc/openvpn /usr/share/doc/openvpn; p_i "  Done uninstalling OpenVPN"; s3; o_v; else echo "  Aborting!"; s3; o_v; fi
 fi; echo; d_m; echo; read -p "  Enter client name e.g: " -e -i kabol88 CLIENT; echo; i_t "openvpn iptables openssl"; cp -R /usr/share/doc/openvpn/examples/easy-rsa/ /etc/openvpn; cd /etc/open\
@@ -56,7 +56,7 @@ p_i "  Port $ADDPORT added!"; s3; t; else echo "  Install 3proxy first!"; s3; t;
 echo "#  OpenSSH6.1p1-HPN13v14-6.2p2-OpenVPN-Dropbear-3Proxy Quick Installer Script. #"; echo "#     No warranty to any damage on your system, proceed at your own risk!      #"; echo "#######\
 #########################################################################"; echo; echo; echo "   1) Un|Install OpenSSH_6.2p2           6) Server Speedtest"; echo "   2) Un|Install OpenSSH6.1p\
 1-HPN13v14   7) Add|Remove OpenSSH addition port"; echo "   3) Un|Install Dropbear_2013.58        8) Add|Remove Dropbear addition port"; echo "   4) Un|Install 3Proxy                  9) Add|\
-Remove 3Proxy addition port"; echo "   5) Un|Install OpenVPN                 0) Script info ./tshvdp"; echo; read -p "  Select an option [0-9]|[ctrl+c]: " -n 1 -r option; case $option in 7)ad\
+Remove 3Proxy addition port"; echo "   5) Un|Install OpenVPN                 0) Script info ./dropxxx"; echo; read -p "  Select an option [0-9]|[ctrl+c]: " -n 1 -r option; case $option in 7)ad\
 p_ssh;; 8)adp_drb;; 9)adp_3pr;; 2)if [ -e /etc/ssh/sshd_not_to_be_run ]; then echo ") Uninstall Dropbear first!"; s3; t; fi; if [ -e /usr/local/src/openssh-6.2p2 ]; then echo "  Uninstall Ope\
 nSSH6.2p2 first!"; t; else if [ ! -e /usr/local/src/openssh-6.1p1 ]; then ssh_one; ssh -V; p_i "  OpenSSH6.1p1-HPN13v14 installed & running on port $PORT"; s3; t; else res_def; t; fi; fi;; 1)\
 if [ -e /etc/ssh/sshd_not_to_be_run ]; then echo ") Uninstall Dropbear first!"; s3; t; fi; if [ -e /usr/local/src/openssh-6.1p1 ]; then echo ") Uninstall OpenSSH6.1p1-HPN13v14 first!"; s3; t
@@ -80,4 +80,4 @@ our proxy is authenticated! Your Proxy authentication: $PORT | $passwd"; echo " 
 ional port at /etc/3proxy/3proxy.cfg"; echo; read -p "  Back to main [enter]: "; cd ~; t; else read -p ") Uninstall 3Proxy? [y/n]: " -n 1 -r; if [[ $REPLY =~ ^[Yy]$ ]]; then echo; /usr/bin/ki\
 llall 3proxy; rm -rf /etc/3proxy /usr/local/etc/3proxy /etc/init.d/3proxy /var/log/3proxy.log; netstat -tulpn; p_i "  Done unistalling 3Proxy"; s3; t; else echo "  Aborting!"; s3; t; fi; fi;;
 5)o_v;; 6)function t_ag { echo; read -p "  Test again? [y/n]: " -n 1 -r; echo; if [[ $REPLY =~ ^[Yy]$ ]]; then echo; ./sv --share; t_ag; else t; fi; }; if [ ! -e ~/sv ]; then echo; wget nyany\
-uk.uk.ht/sv; chmod 100 sv; fi; clear; p_i ""; ./sv --share; t_ag; t;; 0)cat ~/tshvdp | less; t;; esac; echo ") Can't find that option!"; s3; t done
+uk.uk.ht/sv; chmod 100 sv; fi; clear; p_i ""; ./sv --share; t_ag; t;; 0)cat ~/dropxxx | less; t;; esac; echo ") Can't find that option!"; s3; t done
