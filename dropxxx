@@ -55,7 +55,7 @@ T removed!"; s3; t; else echo "  Aborting!"; s3; t; fi; fi; service 3proxy stop;
 p_i "  Port $ADDPORT added!"; s3; t; else echo "  Install 3proxy first!"; s3; t; fi; }; p_i ""; clear; echo "################################################################################"
 echo "#  OpenSSH6.1p1-HPN13v14-6.2p2-OpenVPN-Dropbear-3Proxy Quick Installer Script. #"; echo "#     No warranty to any damage on your system, proceed at your own risk!      #"; echo "#######\
 #########################################################################"; echo; echo; echo "   1) Un|Install OpenSSH_6.2p2           6) Server Speedtest"; echo "   2) Un|Install OpenSSH6.1p\
-1-HPN13v14   7) Add|Remove OpenSSH addition port"; echo "   3) Un|Install Dropbear_2013.58        8) Add|Remove Dropbear addition port"; echo "   4) Un|Install 3Proxy                  9) Add|\
+1-HPN13v14   7) Add|Remove OpenSSH addition port"; echo "   3) Un|Install Dropbear_2013.59        8) Add|Remove Dropbear addition port"; echo "   4) Un|Install 3Proxy                  9) Add|\
 Remove 3Proxy addition port"; echo "   5) Un|Install OpenVPN                 0) Script info ./dropxxx"; echo; read -p "  Select an option [0-9]|[ctrl+c]: " -n 1 -r option; case $option in 7)ad\
 p_ssh;; 8)adp_drb;; 9)adp_3pr;; 2)if [ -e /etc/ssh/sshd_not_to_be_run ]; then echo ") Uninstall Dropbear first!"; s3; t; fi; if [ -e /usr/local/src/openssh-6.2p2 ]; then echo "  Uninstall Ope\
 nSSH6.2p2 first!"; t; else if [ ! -e /usr/local/src/openssh-6.1p1 ]; then ssh_one; ssh -V; p_i "  OpenSSH6.1p1-HPN13v14 installed & running on port $PORT"; s3; t; else res_def; t; fi; fi;; 1)\
